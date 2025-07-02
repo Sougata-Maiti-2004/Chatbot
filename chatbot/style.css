@@ -1,0 +1,222 @@
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f1f1f1;
+  background-image: url("https://d2vrvpw63099lz.cloudfront.net/conversational-ai-platform/header-conversational-ai-chatbot-speech-bubble.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+
+
+/* Chatbot Toggler Button */
+.chatbot-toggler {
+  position: fixed;
+  right: 40px;
+  bottom: 35px;
+  height: 70px;        
+  width: 70px;         
+  color: #fff;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background: #724ae8;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 999;
+  font-size: 32px;      
+}
+
+.chatbot-toggler:hover {
+  background: #5e3ac6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+.show-chatbot .chatbot-toggler {
+  transform: rotate(90deg);
+}
+
+.chatbot-toggler span {
+  position: absolute;
+}
+
+/* Hide icon when toggled */
+.show-chatbot .chatbot-toggler span:first-child,
+.chatbot-toggler span:last-child {
+  opacity: 0;
+}
+
+.show-chatbot .chatbot-toggler span:last-child {
+  opacity: 1;
+}
+
+/* Chatbot Container */
+.chatbot {
+  position: fixed;
+  right: 40px;
+  bottom: 100px;
+  width: 420px;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+  transform-origin: bottom right;
+  transition: all 0.1s ease;
+  box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
+              0 32px 64px -48px rgba(0, 0, 0, 0.5);
+}
+
+/* Show when active */
+.show-chatbot .chatbot {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+/* Chatbot Header */
+.chatbot header {
+  background: #724ae8;
+  padding: 16px 0;
+  text-align: center;
+  position: relative;
+}
+
+.chatbot header h2 {
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.chatbot header .close-btn {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  color: #fff;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+/* Chat Box */
+.chatbox {
+  overflow-y: auto;
+  height: 450px;
+  padding: 30px 20px 100px;
+}
+
+.chatbox .chat {
+  display: flex;
+}
+
+.chatbox .incoming span {
+  height: 32px;
+  width: 32px;
+  color: #fff;
+  background: #724ae8;
+  align-self: flex-end;
+  text-align: center;
+  line-height: 32px;
+  border-radius: 4px;
+  margin: 0 10px 7px 0;
+}
+
+.chatbox .outgoing {
+  margin: 20px 0;
+  justify-content: flex-end;
+}
+
+.chatbox .chat p {
+  color: #fff;
+  max-width: 75%;
+  white-space: pre-wrap;
+  font-size: 0.95rem;
+  padding: 12px 16px;
+  border-radius: 10px 10px 0 10px;
+  background: #724ae8;
+}
+
+.chatbox .incoming p {
+  color: #000;
+  background: #f2f2f2;
+  border-radius: 10px 10px 10px 0;
+}
+
+/* Error messages */
+.chatbox .chat p.error {
+  color: #721c24;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+/* Input Area */
+.chatbot .chat-input {
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  padding: 3px 20px;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input textarea {
+  height: 55px;
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 0.95rem;
+  padding: 15px 15px 15px 0;
+}
+
+.chat-input span {
+  align-self: flex-end;
+  color: #724ae8;
+  cursor: pointer;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+}
+
+/* Show send button only when typing */
+.chat-input textarea:valid
+ ~ span {
+  visibility: visible;
+}
+
+/* Responsive */
+@media (max-width: 490px) {
+  .chatbot {
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .chatbot .chatbox {
+    height: 90%;
+    padding: 25px 15px 100px;
+  }
+
+  .chatbot .chat-input {
+    padding: 5px 15px;
+  }
+}
